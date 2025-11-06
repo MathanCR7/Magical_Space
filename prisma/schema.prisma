@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Model for anonymous visit logs (existing)
+model VisitLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  pageUrl   String
+  ipAddress String?
+  userAgent String?
+  referrer  String?
+  visitTime DateTime @default(now())
+
+  @@index([visitTime])
+}
+
+// NEW: Model for "Get a Free Quote" form submissions
+model QuoteRequest {
+  id              String   @id @default(cuid())
+  name            String
+  email           String
+  phone           String
+  requirementType String   // e.g. "STANDARD", "PREMIUM"
+  floorplan       String   // e.g. "1 BHK", "2 BHK"
+  details         Json?    // To store checkbox selections like { kitchen: ["Modular Kitchen"], ... }
+  createdAt       DateTime @default(now())
+
+  @@index([createdAt])
+}
