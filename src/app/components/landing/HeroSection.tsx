@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+// UPDATED: Added useEffect and useRef for the auto-slide functionality
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-// Import the 'Transition' type from framer-motion
 import { motion, AnimatePresence, Variants, Transition } from 'framer-motion';
 
 // Local wrap utility to cycle a value between min (inclusive) and max (exclusive)
@@ -168,9 +168,37 @@ export function HeroSection() {
     const [[page, direction], setPage] = useState([0, 0]);
     const slideIndex = wrap(0, slides.length, page);
 
+    // ADDITION: useRef to hold the interval ID for auto-sliding
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+    // ADDITION: Function to handle advancing the slide
     const paginate = (newDirection: number) => {
         setPage([page + newDirection, newDirection]);
     };
+
+    // ADDITION: useEffect hook to manage the automatic sliding interval
+    useEffect(() => {
+        // Function to start the interval
+        const startAutoScroll = () => {
+            // Clear any existing interval before starting a new one
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+            // Set an interval to paginate to the next slide (direction 1) every 3 seconds
+            intervalRef.current = setInterval(() => {
+                paginate(1);
+            }, 5500); // 5500 milliseconds = 5.5 seconds
+        };
+
+        startAutoScroll(); // Start the auto-scroll when the component mounts
+
+        // Cleanup function: this will be called when the component unmounts
+        return () => {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current); // Clear the interval to prevent memory leaks
+            }
+        };
+    }, [page]); // This effect will re-run (and reset the timer) whenever the 'page' changes
 
     return (
         <section className="relative w-full h-screen overflow-hidden bg-black text-white flex flex-col items-center justify-center font-sans">
