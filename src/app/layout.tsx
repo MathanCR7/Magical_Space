@@ -26,9 +26,9 @@ const cormorant = Cormorant_Garamond({
   variable: '--font-cormorant',
 });
 
-const siteUrl = 'https://www.yourwebsite.com';
+// UPDATED: Use the environment variable for the site URL
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
-// Your metadata and jsonLd code stays the same...
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -73,6 +73,7 @@ export const metadata: Metadata = {
     canonical: '/',
   }
 };
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'HomeAndConstructionBusiness',
