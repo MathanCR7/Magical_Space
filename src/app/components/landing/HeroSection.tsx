@@ -217,7 +217,7 @@ export function HeroSection() {
                 {/* Right Side: Foreground Image Portal & CTA */}
                 <div className="relative w-full h-full flex flex-col items-center justify-center lg:justify-end">
                     <div className="relative w-[280px] h-[420px] sm:w-[350px] sm:h-[525px] md:w-[400px] md:h-[600px] [perspective:1200px]">
-                        
+
                         {/* Portal Frame */}
                         <div className="absolute inset-0 bg-transparent border-[1px] border-white/10 rounded-[200px] shadow-[0_0_30px_rgba(255,255,255,0.05)]"></div>
 
@@ -237,22 +237,17 @@ export function HeroSection() {
                                 </motion.div>
                             </AnimatePresence>
                         </div>
-                        
-                        {/* CTA for desktop, centered in the oval, hidden on mobile */}
-                        <div className="hidden lg:flex absolute inset-0 z-10 items-center justify-center">
+
+                        {/* CTA for ALL screen sizes, centered in the oval */}
+                        <div className="flex absolute inset-0 z-10 items-center justify-center">
                             <div className="opacity-80 hover:opacity-100 transition-opacity">
                                 <CTAButton />
                             </div>
                         </div>
                     </div>
-                    
-                    {/* CTA for mobile, shown below the oval */}
-                    <div className="lg:hidden mt-4 opacity-80 hover:opacity-100 transition-opacity">
-                        <CTAButton />
-                    </div>
                 </div>
             </div>
-            
+
             <NavButton direction="left" onClick={() => paginate(-1)} />
             <NavButton direction="right" onClick={() => paginate(1)} />
         </section>
