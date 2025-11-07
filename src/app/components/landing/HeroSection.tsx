@@ -20,14 +20,14 @@ const slides = [
         title: 'Modern Living',
         description: 'Experience unparalleled comfort and style with our bespoke living room designs that reflect your personality.',
         altText: 'A modern living room designed with a comfortable white sofa and minimalist decor.',
-        image: '/image/hero-1.jpg',
+        image: '/image/hero-11.jpg',
     },
     {
         id: 2,
         title: 'Luxury Bedroom',
         description: 'Transform your bedroom into a serene sanctuary with our luxurious and elegant interior solutions.',
         altText: 'A luxury master bedroom interior design with elegant furniture and lighting.',
-        image: '/image/hero-2.jpg',
+        image: '/image/hero-21.jpg',
     },
     {
         id: 3,
