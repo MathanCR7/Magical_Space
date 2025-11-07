@@ -4,10 +4,10 @@ import { Building, Users, Square, Smile } from 'lucide-react';
 import { AnimatedCounter } from './AnimatedCounter';
 
 const stats = [
-    { icon: <Building className="h-10 w-10 text-brand-gold" />, value: 500, label: "Projects Completed", suffix: "+" },
-    { icon: <Smile className="h-10 w-10 text-brand-gold" />, value: 450, label: "Happy Clients", suffix: "+" },
-    { icon: <Square className="h-10 w-10 text-brand-gold" />, value: 200000, label: "Sq. Ft. Designed", suffix: "+" },
-    { icon: <Users className="h-10 w-10 text-brand-gold" />, value: 50, label: "Expert Designers", suffix: "+" },
+    { icon: <Building className="h-10 w-10 text-brand-gold" />, value: 50, label: "Projects Completed", suffix: "+" },
+    { icon: <Smile className="h-10 w-10 text-brand-gold" />, value: 50, label: "Happy Clients", suffix: "+" },
+    { icon: <Square className="h-10 w-10 text-brand-gold" />, value: 2000, label: "Sq. Ft. Designed", suffix: "+" },
+    { icon: <Users className="h-10 w-10 text-brand-gold" />, value: 20, label: "Expert Designers", suffix: "+" },
 ]
 
 export function StatsSection() {
